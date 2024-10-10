@@ -17,14 +17,14 @@ const PopularDetails = () => {
     const { data: latest = [] } = useQuery({
         queryKey: ['latestNews'],
         queryFn: async () => {
-            const { data } = await axios.get('http://localhost:3001/newss/latestNews')
+            const { data } = await axios.get('https://global-news-server-phi.vercel.app/newss/latestNews')
             return data;
         }
     })
 
 
     useEffect(() => {
-        fetch('http://localhost:3001/news')
+        fetch('https://global-news-server-phi.vercel.app/news')
             .then(response => response.json())
             .then(data => setPopulars(data.slice(0, 7)))
             .catch(error => console.error('Error fetching JSON:', error));

@@ -21,7 +21,7 @@ const RequestReporterModal: React.FC<RequestReporterModalProps> = ({
     if (email && isOpen) {
       // Fetch current status of user's reporter request
       const fetchRequestStatus = async () => {
-        const response = await fetch(`http://localhost:3001/request-status?email=${email}`);
+        const response = await fetch(`https://global-news-server-phi.vercel.app/request-status?email=${email}`);
         const result = await response.json();
         setStatus(result.status); // Assuming result contains 'status'
       };
@@ -33,7 +33,7 @@ const RequestReporterModal: React.FC<RequestReporterModalProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:3001/request-reporter", {
+    const response = await fetch("https://global-news-server-phi.vercel.app/request-reporter", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

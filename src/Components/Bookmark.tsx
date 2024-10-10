@@ -19,7 +19,7 @@ const Bookmark: React.FC<BookmarkProps> = ({ newsId }) => {
       // Fetch bookmarked news from the DB when the component loads
       const fetchBookmarkedNews = async () => {
         try {
-          const response = await axios.get(`http://localhost:3001/bookmarks/${user.email}`);
+          const response = await axios.get(`https://global-news-server-phi.vercel.app/bookmarks/${user.email}`);
           const userBookmarks = response.data;
 
           // Set bookmarked state if the newsId is already in user's bookmarks
@@ -48,8 +48,8 @@ const Bookmark: React.FC<BookmarkProps> = ({ newsId }) => {
 
     try {
       const url = bookmarked
-        ? "http://localhost:3001/remove-bookmark"
-        : "http://localhost:3001/bookmark";
+        ? "https://global-news-server-phi.vercel.app/remove-bookmark"
+        : "https://global-news-server-phi.vercel.app/bookmark";
 
       await axios.post(url, { email: user.email, newsId });
 

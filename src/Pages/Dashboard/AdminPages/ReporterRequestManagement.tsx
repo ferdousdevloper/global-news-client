@@ -16,7 +16,7 @@ const ReporterRequestManagement: React.FC = () => {
   // Fetch users with pending reporter requests
   useEffect(() => {
     const fetchUsers = async () => {
-      const response = await fetch("http://localhost:3001/pending-reporter-requests");
+      const response = await fetch("https://global-news-server-phi.vercel.app/pending-reporter-requests");
       const data = await response.json();
       setUsers(data);
     };
@@ -30,7 +30,7 @@ const ReporterRequestManagement: React.FC = () => {
 
   const onConfirmAction = async (confirmed: boolean) => {
     if (confirmed && selectedUser && action) {
-      const response = await fetch("http://localhost:3001/admin/approve-request", {
+      const response = await fetch("https://global-news-server-phi.vercel.app/admin/approve-request", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: selectedUser.email, action }),

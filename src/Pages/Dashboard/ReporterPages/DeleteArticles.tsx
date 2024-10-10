@@ -5,7 +5,7 @@ const DeleteArticles: React.FC = () => {
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const response = await fetch('http://localhost:3001/submitted-articles'); // Update with your API endpoint
+      const response = await fetch('https://global-news-server-phi.vercel.app/submitted-articles'); // Update with your API endpoint
       const data = await response.json();
       setArticles(data);
     };
@@ -13,7 +13,7 @@ const DeleteArticles: React.FC = () => {
   }, []);
 
   const handleDelete = async (id: string) => {
-    const response = await fetch(`http://localhost:3001/delete-article/${id}`, {
+    const response = await fetch(`https://global-news-server-phi.vercel.app/delete-article/${id}`, {
       method: 'DELETE',
     });
     if (response.ok) {

@@ -8,7 +8,6 @@ import useAuth from "../hooks/useAuth";
 import ShareDropdown from "../Components/Home/ShareDropdown";
 import Bookmark from "../Components/Bookmark";
 
-
 interface NewsItem {
   _id: string;
   title: string;
@@ -31,8 +30,10 @@ const AllNews: React.FC = () => {
   const [categories, setCategories] = useState<string[]>([]);
   const [countries, setCountries] = useState<string[]>([]);
   const [selectedFilter, setSelectedFilter] = useState<string>("All News");
-  const [selectedCountry, setSelectedCountry] = useState<string>("All Countries");
-  const [selectedDateFilter, setSelectedDateFilter] = useState<string>("All Dates");
+  const [selectedCountry, setSelectedCountry] =
+    useState<string>("All Countries");
+  const [selectedDateFilter, setSelectedDateFilter] =
+    useState<string>("All Dates");
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   const auth = useAuth();
@@ -41,14 +42,20 @@ const AllNews: React.FC = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get<NewsItem[]>("http://localhost:3001/news");
+        const response = await axios.get<NewsItem[]>(
+          "https://global-news-server-phi.vercel.app/news"
+        );
         setNews(response.data);
         setFilteredNews(response.data);
 
-        const uniqueCategories = Array.from(new Set<string>(response.data.map((item) => item.category)));
+        const uniqueCategories = Array.from(
+          new Set<string>(response.data.map((item) => item.category))
+        );
         setCategories(uniqueCategories);
 
-        const uniqueCountries = Array.from(new Set<string>(response.data.map((item) => item.region)));
+        const uniqueCountries = Array.from(
+          new Set<string>(response.data.map((item) => item.region))
+        );
         setCountries(uniqueCountries);
 
         setLoading(false);
@@ -83,19 +90,27 @@ const AllNews: React.FC = () => {
     // Filter by category
     if (selectedFilter !== "All News") {
       if (selectedFilter === "Breaking News") {
-        updatedFilteredNews = updatedFilteredNews.filter((item) => item.breaking_news);
+        updatedFilteredNews = updatedFilteredNews.filter(
+          (item) => item.breaking_news
+        );
       } else if (selectedFilter === "Popular News") {
-        updatedFilteredNews = updatedFilteredNews.filter((item) => item.popular_news);
+        updatedFilteredNews = updatedFilteredNews.filter(
+          (item) => item.popular_news
+        );
       } else if (selectedFilter === "Live News") {
         updatedFilteredNews = updatedFilteredNews.filter((item) => item.isLive);
       } else {
-        updatedFilteredNews = updatedFilteredNews.filter((item) => item.category === selectedFilter);
+        updatedFilteredNews = updatedFilteredNews.filter(
+          (item) => item.category === selectedFilter
+        );
       }
     }
 
     // Filter by country
     if (selectedCountry !== "All Countries") {
-      updatedFilteredNews = updatedFilteredNews.filter((item) => item.region === selectedCountry);
+      updatedFilteredNews = updatedFilteredNews.filter(
+        (item) => item.region === selectedCountry
+      );
     }
 
     // Optionally filter by date
@@ -103,16 +118,21 @@ const AllNews: React.FC = () => {
       const today = new Date();
       if (selectedDateFilter === "Today") {
         updatedFilteredNews = updatedFilteredNews.filter(
-          (item) => new Date(item.date_time).toDateString() === today.toDateString()
+          (item) =>
+            new Date(item.date_time).toDateString() === today.toDateString()
         );
       } else if (selectedDateFilter === "Last 7 Days") {
         const lastWeek = new Date();
         lastWeek.setDate(today.getDate() - 7);
-        updatedFilteredNews = updatedFilteredNews.filter((item) => new Date(item.date_time) >= lastWeek);
+        updatedFilteredNews = updatedFilteredNews.filter(
+          (item) => new Date(item.date_time) >= lastWeek
+        );
       } else if (selectedDateFilter === "Last 30 Days") {
         const lastMonth = new Date();
         lastMonth.setDate(today.getDate() - 30);
-        updatedFilteredNews = updatedFilteredNews.filter((item) => new Date(item.date_time) >= lastMonth);
+        updatedFilteredNews = updatedFilteredNews.filter(
+          (item) => new Date(item.date_time) >= lastMonth
+        );
       }
     }
 
@@ -218,7 +238,9 @@ const AllNews: React.FC = () => {
                     {new Date(item.date_time).toLocaleString()}
                   </p>
                 </div>
-                <h2 className="text-xl font-semibold mt-2 hover:underline">{item.title}</h2>
+                <h2 className="text-xl font-semibold mt-2 hover:underline">
+                  {item.title}
+                </h2>
               </Link>
               <hr className="my-4" />
 
@@ -227,7 +249,10 @@ const AllNews: React.FC = () => {
                 {item.description.length > 300 ? (
                   <>
                     {item.description.slice(0, 300)}...
-                    <Link to={`/news/${item._id}`} className="text-blue-500 hover:text-blue-300">
+                    <Link
+                      to={`/news/${item._id}`}
+                      className="text-blue-500 hover:text-blue-300"
+                    >
                       {" "}
                       See More
                     </Link>
@@ -244,7 +269,7 @@ const AllNews: React.FC = () => {
                 {/* Include the Bookmark component and pass newsId */}
                 <Bookmark newsId={item._id} />
 
-                <ShareDropdown url={`http://localhost:3001/news/${item._id}`} />
+                <ShareDropdown url={`https://global-news-server-phi.vercel.app/news/${item._id}`} />
               </div>
             </div>
           ))}

@@ -18,7 +18,7 @@ const Entertainment = () => {
     useEffect(() => {
         const fetchEntertainmentNews = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/news');
+                const response = await axios.get('https://global-news-server-phi.vercel.app/news');
                 const newsData = response.data;
                 console.log(newsData);
                 // Filter for Entertainment news

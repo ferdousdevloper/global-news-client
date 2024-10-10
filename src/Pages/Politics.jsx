@@ -39,7 +39,7 @@ const Politics = () => {
   useEffect(() => {
     const fetchPoliticsNews = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/news");
+        const response = await axios.get("https://global-news-server-phi.vercel.app/news");
         const newsData = response.data;
         const politicsNews = newsData.filter(
           (singleNews) => singleNews.category === "Politics"
@@ -122,7 +122,7 @@ const Politics = () => {
               <div className="flex justify-between items-center text-xl md:text-2xl my-3 text-slate-100">
                 <MdFavoriteBorder />
                 <Bookmark newsId={livePoliticsNews._id} />
-                <ShareDropdown url={`http://localhost:3001/news/${livePoliticsNews._id}`} />
+                <ShareDropdown url={`https://global-news-server-phi.vercel.app/news/${livePoliticsNews._id}`} />
               </div>
             </div>
           </div>
@@ -173,7 +173,7 @@ const Politics = () => {
                 <div className="flex justify-between items-center text-xl md:text-2xl my-3">
                   <MdFavoriteBorder />
                   <Bookmark newsId={item._id} />
-                  <ShareDropdown url={`http://localhost:3001/news/${item._id}`} />
+                  <ShareDropdown url={`https://global-news-server-phi.vercel.app/news/${item._id}`} />
                 </div>
               </div>
             ))}
@@ -211,7 +211,7 @@ const Politics = () => {
                   <div className="flex justify-around items-center text-lg md:text-xl my-1 text-slate-100">
                     <MdFavoriteBorder />
                     <Bookmark newsId={popularSingleNews._id} />
-                    <ShareDropdown url={`http://localhost:3001/news/${popularSingleNews._id}`} />
+                    <ShareDropdown url={`https://global-news-server-phi.vercel.app/news/${popularSingleNews._id}`} />
                   </div>
                 </div>
               </div>

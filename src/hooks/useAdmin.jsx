@@ -9,7 +9,7 @@ const useAdmin = () => {
     queryKey: [user?.email, 'isAdmin'],
     enabled: !!user?.email,
     queryFn: async () => {
-      const { data } = await axios.get(`http://localhost:3001/users/admin/${user?.email}`);
+      const { data } = await axios.get(`https://global-news-server-phi.vercel.app/users/admin/${user?.email}`);
       return data?.admin;
     },
   });

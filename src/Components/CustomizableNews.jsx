@@ -8,7 +8,7 @@ const CustomizableNews = ({ openFilter }) => {
     const { data: news = [] } = useQuery({
         queryKey: ['news'],
         queryFn: async () => {
-            const { data } = await axios.get('http://localhost:3001/news')
+            const { data } = await axios.get('https://global-news-server-phi.vercel.app/news')
             return data;
         }
     })

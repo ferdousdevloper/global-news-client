@@ -22,7 +22,7 @@ const Sport = () => {
   useEffect(() => {
     const fetchSportsNews = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/news');
+        const response = await axios.get('https://global-news-server-phi.vercel.app/news');
         const newsData = response.data;
 
         // Filter for sports news
@@ -60,14 +60,14 @@ const Sport = () => {
         <p className='mt-3'>Sports bring people together...</p>
       </div>
 
-      {/* Live Sports News */}
-      {liveSportsNews && (
+            {/* Live Sports News */}
+            {liveSportsNews && (
         <div className="flex flex-col md:flex-row border text-white border-gray-300 rounded-lg shadow-lg overflow-hidden glass my-10">
-          <div className="lg:w-1/2">
+          <div className="md:w-1/2 w-full">
             <img
               src={liveSportsNews.image}
               alt={liveSportsNews.title}
-              className="w-full h-full object-cover p-3 lg:p-0"
+              className="w-full h-full object-cover"
             />
           </div>
           <div className="w-full md:w-1/2 p-6 flex flex-col justify-between">
@@ -85,11 +85,8 @@ const Sport = () => {
               )}
               <div className="flex justify-between items-center text-xl md:text-2xl my-3 text-slate-100">
                 <MdFavoriteBorder />
-                <CiBookmark
-                  onClick={handleBookmark}
-                  className={`cursor-pointer ${isBookmarked ? 'text-green-500' : 'text-white'}`}
-                />
-                <IoShareSocialOutline />
+                <Bookmark newsId={liveSportsNews._id} />
+                <ShareDropdown url={`https://global-news-server-phi.vercel.app/news/${liveSportsNews._id}`} />
               </div>
             </div>
           </div>

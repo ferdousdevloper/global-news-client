@@ -40,15 +40,15 @@ const ShareDropdown: React.FC<ShareDropdownProps> = ({ url }) => {
         onClick={() => setIsOpen((prev) => !prev)}
       />
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-black rounded shadow-lg z-50">
+        <div className="absolute right-0 bottom-10 mt-2 w-48 bg-black rounded shadow-lg z-50 glass">
           <div className="flex flex-col p-2">
-            <button onClick={() => handleShare("facebook")} className="flex items-center p-2 hover:bg-gray-200">
+            <button onClick={() => handleShare("facebook")} className="flex items-center p-2 hover:bg-colorPrimary">
               <FaFacebookF className="mr-2" /> Facebook
             </button>
-            <button onClick={() => handleShare("twitter")} className="flex items-center p-2 hover:bg-gray-200">
+            <button onClick={() => handleShare("twitter")} className="flex items-center p-2 hover:bg-colorPrimary">
               <FaTwitter className="mr-2" /> Twitter
             </button>
-            <button onClick={() => handleShare("linkedin")} className="flex items-center p-2 hover:bg-gray-200">
+            <button onClick={() => handleShare("linkedin")} className="flex items-center p-2 hover:bg-colorPrimary">
               <FaLinkedinIn className="mr-2" /> LinkedIn
             </button>
           </div>

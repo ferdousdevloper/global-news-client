@@ -9,7 +9,7 @@ const useRole = () => {
     queryKey: ['role', user?.email],
     enabled: !loading && !!user?.email,
     queryFn: async () => {
-      const { data } = await axios.get(`http://localhost:3001/user/${user?.email}`)
+      const { data } = await axios.get(`https://global-news-server-phi.vercel.app/user/${user?.email}`)
       return data.role
     },
   })

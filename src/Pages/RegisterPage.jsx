@@ -48,7 +48,7 @@ const RegisterPage = () => {
         password: e.target.password.value,
         role: "user",
       };
-      axios.post("http://localhost:3001/register", userInfo);
+      axios.post("https://global-news-server-phi.vercel.app/register", userInfo);
       Swal.fire({
         icon: "success",
         title: "Registration Successful!",

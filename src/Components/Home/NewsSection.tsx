@@ -25,7 +25,7 @@ const NewsSection: React.FC = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/news");
+        const response = await axios.get("https://global-news-server-phi.vercel.app/news");
         setNews(response.data);
         setLoading(false);
       } catch (err) {
@@ -77,7 +77,7 @@ const NewsSection: React.FC = () => {
                   <MdFavoriteBorder />
                   {/* Use the Bookmark component here */}
                   <Bookmark newsId={item._id} />
-                  <ShareDropdown url={`http://localhost:3001/news/${item._id}`} />
+                  <ShareDropdown url={`https://global-news-server-phi.vercel.app/news/${item._id}`} />
                 </div>
               </div>
             ))}
@@ -106,7 +106,7 @@ const NewsSection: React.FC = () => {
                   <MdFavoriteBorder />
                   {/* Use the Bookmark component here as well */}
                   <Bookmark newsId={item._id} />
-                  <ShareDropdown url={`http://localhost:3001/news/${item._id}`} />
+                  <ShareDropdown url={`https://global-news-server-phi.vercel.app/news/${item._id}`} />
                 </div>
               </div>
             ))}

@@ -27,7 +27,7 @@ const SubmittedArticles: React.FC = () => {
     queryKey: ['articles', user?.email],
     queryFn: async () => {
       if (user?.email) {
-        const response = await axios.get(`http://localhost:3001/news/my-articles/${user.email}`);
+        const response = await axios.get(`https://global-news-server-phi.vercel.app/news/my-articles/${user.email}`);
         return response.data;
       }
       return [];
@@ -38,7 +38,7 @@ const SubmittedArticles: React.FC = () => {
   // Mutation to delete an article
   const deleteArticleMutation = useMutation<void, Error, string>({
     mutationFn: (articleId: string) => {
-      return axios.delete(`http://localhost:3001/news/delete-article/${articleId}`);
+      return axios.delete(`https://global-news-server-phi.vercel.app/news/delete-article/${articleId}`);
     },
     onSuccess: () => {
       // Refetch articles after successful deletion only if the user email is defined

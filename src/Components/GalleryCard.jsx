@@ -4,7 +4,7 @@ const GalleryCard = ({ frame }) => {
     // console.log(frame)
     return (
         <>
-            <div className=' md:grid grid-cols-2 gap-3 min-h-screen mb-3'>
+            <div className=' md:grid grid-cols-2 gap-3 min-h-screen mb-3 con'>
 
                 <div>
                     <div className='card h-[417px]'>

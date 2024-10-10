@@ -20,7 +20,7 @@ const UpdateNews = () => {
   useEffect(() => {
     const fetchNewsData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/news/${id}`);
+        const response = await axios.get(`https://global-news-server-phi.vercel.app/news/${id}`);
         setNewsData(response.data); // Set the fetched data as default values
       } catch (error) {
         console.error('Error fetching news data:', error);
@@ -47,7 +47,7 @@ const UpdateNews = () => {
     e.preventDefault();
     console.log("Updating news with data:", newsData); // Log the data being sent
     try {
-      const response = await axios.put(`http://localhost:3001/news/${id}`, newsData);
+      const response = await axios.put(`https://global-news-server-phi.vercel.app/news/${id}`, newsData);
       if (response.status === 200) {
         Swal.fire({
           title: 'Updated!',

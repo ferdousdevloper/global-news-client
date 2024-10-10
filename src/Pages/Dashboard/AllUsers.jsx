@@ -9,7 +9,7 @@ const AllUsers = () => {
   const { data: users = [], refetch, isLoading, error } = useQuery({
     queryKey: ["allUsers"],
     queryFn: async () => {
-      const { data } = await axios.get("http://localhost:3001/users"); // Update the URL if necessary
+      const { data } = await axios.get("https://global-news-server-phi.vercel.app/users"); // Update the URL if necessary
       return data;
     }
   });
@@ -29,7 +29,7 @@ const AllUsers = () => {
       confirmButtonText: "Yes, Make Admin!!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.patch(`http://localhost:3001/users/admin/${user._id}`).then((res) => {
+        axios.patch(`https://global-news-server-phi.vercel.app/users/admin/${user._id}`).then((res) => {
           console.log(res.data);
           if (res.data.modifiedCount > 0) {
             refetch();
@@ -47,7 +47,7 @@ const AllUsers = () => {
   };
 
   const handleMakeBlock = (user) => {
-    axios.patch(`http://localhost:3001/users/block/${user._id}`).then((res) => {
+    axios.patch(`https://global-news-server-phi.vercel.app/users/block/${user._id}`).then((res) => {
       console.log(res.data);
       if (res.data.modifiedCount > 0) {
         refetch();
@@ -57,7 +57,7 @@ const AllUsers = () => {
   };
 
   const handleMakeActive = (user) => {
-    axios.patch(`http://localhost:3001/users/active/${user._id}`).then((res) => {
+    axios.patch(`https://global-news-server-phi.vercel.app/users/active/${user._id}`).then((res) => {
       console.log(res.data);
       if (res.data.modifiedCount > 0) {
         refetch();
@@ -84,7 +84,7 @@ const AllUsers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:3001/users/${user._id}`).then((res) => {
+        axios.delete(`https://global-news-server-phi.vercel.app/users/${user._id}`).then((res) => {
           if (res.data.deletedCount > 0) {
             refetch();
             Swal.fire({

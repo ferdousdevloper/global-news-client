@@ -17,7 +17,7 @@ const NewsDetail = () => {
     // Fetch the news details based on the id
     const fetchNewsDetail = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/news/${id}`);
+        const response = await axios.get(`https://global-news-server-phi.vercel.app/news/${id}`);
         setNews(response.data);
         setLoading(false);
       } catch (err) {
@@ -84,7 +84,7 @@ const NewsDetail = () => {
               <div className="flex justify-between items-center text-xl md:text-2xl my-3">
                 <MdFavoriteBorder />
                 <Bookmark newsId={news._id} />
-                <ShareDropdown url={`http://localhost:3001/news/${news._id}`} />
+                <ShareDropdown url={`https://global-news-server-phi.vercel.app/news/${news._id}`} />
               </div>
             </div>
           </>
