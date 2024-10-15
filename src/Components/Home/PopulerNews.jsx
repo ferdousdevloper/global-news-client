@@ -15,21 +15,21 @@ import PopularNewsCard from "../PopularNewsCard";
 const PopulerNews = () => {
   const [populars, setPopulars] = useState(null);
 
-    useEffect(() => {
-        fetch('http://localhost:3001/news')
-            .then(response => response.json())
-            .then(data => setPopulars(data))
-            .catch(error => console.error('Error fetching JSON:', error));
-    }, []);
+  useEffect(() => {
+    fetch('http://localhost:3001/news')
+      .then(response => response.json())
+      .then(data => setPopulars(data))
+      .catch(error => console.error('Error fetching JSON:', error));
+  }, []);
 
   console.log(populars);
 
   return (
     <div
-      className="md:container glass p-10 rounded-xl mx-auto my-10 border-t-2 border-[#02AA08] pt-8"
+      className="md:container glass p-4 rounded-xl mx-auto my-10 border-t-2 border-[#02AA08] pt-8"
       style={{ width: "85%" }}
     >
-      <h2 className="-mt-8 text-2xl text-[#02AA08] font-bold mb-4">
+      <h2 className="-mt-8 text-3xl font-bold mb-4 pt-4 text-slate-50 ">
         Populars News
       </h2>
       <Swiper
@@ -44,10 +44,10 @@ const PopulerNews = () => {
             slidesPerView: 3,
           },
           1280: {
-            slidesPerView: 4,
+            slidesPerView: 3,
           },
           1600: {
-            slidesPerView: 5,
+            slidesPerView: 4,
           },
         }}
         spaceBetween={30}
@@ -63,7 +63,7 @@ const PopulerNews = () => {
       >
         {populars?.map((news) =>
           news.popular_news === true ? (
-            <SwiperSlide key={news.id} style={{ width: "208px" }}>
+            <SwiperSlide key={news.id} className="lg:w-9/12 w-full bg-neutral-950 glass p-2 rounded-xl">
               <PopularNewsCard news={news}></PopularNewsCard>
             </SwiperSlide>
           ) : (
