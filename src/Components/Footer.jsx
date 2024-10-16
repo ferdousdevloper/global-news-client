@@ -54,9 +54,7 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <Link to='/category/gallery'>
-                    Gallery
-                  </Link>
+                  <Link to="/category/gallery">Gallery</Link>
                 </li>
               </ul>
             </div>
@@ -73,19 +71,17 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <Link to="/contact">
-                    Contact
-                  </Link>
+                  <Link to="/contact">Contact</Link>
                 </li>
               </ul>
             </div>
             <div className="space-y-3 text-center">
               <ul className="space-y-5">
-                <li>
+                <Link to="/category/about">
                   <a rel="noopener noreferrer" href="#">
                     About
                   </a>
-                </li>
+                </Link>
                 <li>
                   <a rel="noopener noreferrer" href="#">
                     FAQ
