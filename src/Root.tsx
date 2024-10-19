@@ -36,6 +36,7 @@ import PopularDetails from "./Pages/PopularDetails";
 import Technology from "./Pages/Technology";
 import MyFavorites from "./Pages/Dashboard/NormalUser/MyFavorites";
 import About from "./Pages/About";
+import Lifestyle from "./Pages/Lifestyle";
 
 const Root = createBrowserRouter([
   {
@@ -81,6 +82,11 @@ const Root = createBrowserRouter([
         path: "/category/entertainment",
         element: <Entertainment />,
       },
+      {
+        path: "/category/lifestyle",
+        element: <Lifestyle />,
+      },
+
       {
         path: "/category/about",
         element: <About />,

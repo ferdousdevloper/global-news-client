@@ -187,12 +187,6 @@ const NavBar: React.FC = () => {
             >
               Contact Us
             </NavLink>
-            {/* <button
-              onClick={handleFilter}
-              className="hover:bg-[#02AA08] rounded p-2"
-            >
-              Filter
-            </button> */}
 
             {/* Conditionally render DASHBOARD link based on isAdmin and user authentication */}
             {user && isAdmin && (
@@ -445,18 +439,7 @@ const NavBar: React.FC = () => {
             >
               Feature
             </NavLink>
-            <NavLink
-              to="/category/tech"
-              className={({ isActive }) =>
-                `block px-2 py-1 rounded ${
-                  isActive
-                    ? "bg-[#02AA08] text-white"
-                    : "hover:bg-[#02AA08] hover:text-white"
-                }`
-              }
-            >
-              Tech & Startup
-            </NavLink>
+
             <NavLink
               to="/category/gallery"
               className={({ isActive }) =>
@@ -624,18 +607,7 @@ const NavBar: React.FC = () => {
             >
               Feature
             </NavLink>
-            <NavLink
-              to="/category/tech"
-              className={({ isActive }) =>
-                `block px-2 py-1 rounded ${
-                  isActive
-                    ? "bg-[#02AA08] text-white"
-                    : "hover:bg-[#02AA08] hover:text-white"
-                }`
-              }
-            >
-              Tech & Startup
-            </NavLink>
+
             <NavLink
               to="/category/gallery"
               className={({ isActive }) =>
@@ -748,7 +720,10 @@ const NavBar: React.FC = () => {
           </div>
         )}
       </nav>
-      <CustomizableNews openFilter={openFilter} handleFilter={handleFilter}></CustomizableNews>      
+      <CustomizableNews
+        openFilter={openFilter}
+        handleFilter={handleFilter}
+      ></CustomizableNews>
     </>
   );
 };

@@ -5,12 +5,12 @@ import { MdFavoriteBorder } from "react-icons/md";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const Opinion = () => {
+const Lifestyle = () => {
   const [allNews, setAllNews] = useState([]);
   const [popularNews, setPopularNews] = useState([]);
   const [newsPerPage, setNewsPerPage] = useState(8);
   const [currentPage, setCurrentPage] = useState(0);
-  const [liveOpinionNews, setLiveOpinionNews] = useState([]);
+  const [liveLifestyleNews, setLiveLifestyleNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -35,25 +35,25 @@ const Opinion = () => {
   };
 
   useEffect(() => {
-    const fetchOpinionNews = async () => {
+    const fetchLifestyleNews = async () => {
       try {
         const response = await axios.get("http://localhost:3001/news");
         const newsData = response.data;
-        const opinionNews = newsData.filter(
-          (singleNews) => singleNews.category === "Opinion"
+        const lifestyleNews = newsData.filter(
+          (singleNews) => singleNews.category === "Lifestyle"
         );
-        const popularOpinionNews = allNews.filter(
+        const popularLifestyleNews = allNews.filter(
           (singleNews) =>
-            singleNews.category === "Opinion" &&
+            singleNews.category === "Lifestyle" &&
             singleNews.popular_news === true
         );
         const liveNews = allNews.filter(
           (singleNews) =>
-            singleNews.category === "Opinion" && singleNews.isLive === true
+            singleNews.category === "Lifestyle" && singleNews.isLive === true
         );
-        setLiveOpinionNews(liveNews[0]);
-        setAllNews(opinionNews);
-        setPopularNews(popularOpinionNews);
+        setLiveLifestyleNews(liveNews[0]);
+        setAllNews(lifestyleNews);
+        setPopularNews(popularLifestyleNews);
 
         setLoading(false);
       } catch (err) {
@@ -62,7 +62,7 @@ const Opinion = () => {
       }
     };
 
-    fetchOpinionNews();
+    fetchLifestyleNews();
   }, [currentPage, newsPerPage, allNews]);
 
   if (loading) {
@@ -80,40 +80,41 @@ const Opinion = () => {
   return (
     <div className="bg-gray-800 container mx-auto min-h-screen pt-20">
       <div className="lg:w-1/2 mx-auto my-3 lg:my-4 text-center text-gray-100">
-        <h2 className="font-bold text-2xl lg:text-4xl">Opinion</h2>
+        <h2 className="font-bold text-2xl lg:text-4xl">Lifestyle</h2>
         <p className="mt-3">
-          Our Opinion page offers a platform for thought leaders, experts, and
-          everyday voices to share their perspectives on politics, culture, and
-          social change. Engage with debates that challenge conventional
-          thinking and spark meaningful conversations about the future.
+          Explore thoughtful insights into wellness, fashion, and lifestyle
+          choices that empower you to live well and with purpose. Discovering
+          Life’s Rich Tapestry: Wellness, Culture, and Inspiration" – Immerse
+          yourself in the latest trends, ideas, and personal stories that
+          inspire a more balanced, mindful, and fulfilling way of living.
         </p>
       </div>
 
       {/* Live Politics News */}
-      {liveOpinionNews && (
+      {liveLifestyleNews && (
         <div className="flex flex-col md:flex-row border text-white border-gray-300 rounded-lg shadow-lg overflow-hidden glass my-10">
           <div className="md:w-1/2 w-full">
             <img
-              src={liveOpinionNews?.image}
-              alt={liveOpinionNews?.title}
+              src={liveLifestyleNews?.image}
+              alt={liveLifestyleNews?.title}
               className="w-full h-full object-cover"
             />
           </div>
           <div className="w-full md:w-1/2 p-6 flex flex-col justify-between">
             <div>
               <h3 className="text-2xl font-bold mb-2">
-                {liveOpinionNews?.title}
+                {liveLifestyleNews?.title}
               </h3>
               <hr className="my-4" />
               <p className="text-gray-300 mb-4">
-                {liveOpinionNews?.description.slice(0, 1000)}...
+                {liveLifestyleNews?.description.slice(0, 1000)}...
               </p>
             </div>
             <div>
               <p className="text-gray-100 text-sm mb-2">
-                {new Date(liveOpinionNews?.timestamp).toLocaleString()}
+                {new Date(liveLifestyleNews?.timestamp).toLocaleString()}
               </p>
-              {liveOpinionNews?.isLive && (
+              {liveLifestyleNews?.isLive && (
                 <span className="px-4 py-1 bg-red-600 text-white text-xs font-semibold uppercase rounded-full">
                   Live
                 </span>
@@ -155,7 +156,7 @@ const Opinion = () => {
                   </p>
                   <div>
                     <p className="text-gray-100 text-sm mb-2">
-                      {new Date(liveOpinionNews?.timestamp).toLocaleString()}
+                      {new Date(liveLifestyleNews?.timestamp).toLocaleString()}
                     </p>
                     <div className="flex justify-around items-center text-xl md:text-2xl my-5 text-slate-100">
                       <MdFavoriteBorder />
@@ -265,4 +266,4 @@ const Opinion = () => {
   );
 };
 
-export default Opinion;
+export default Lifestyle;

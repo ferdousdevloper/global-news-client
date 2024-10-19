@@ -180,7 +180,7 @@ const Business = () => {
           {/* popular news card */}
           {popularNews.map((popularSingleNews) => (
             <Link
-              to={`/news/${popularNews._id}`}
+              to={`/news/${popularSingleNews._id}`}
               key={popularSingleNews._id}
               className="flex flex-col divide-y my-2 glass dark:divide-gray-300 h-40"
             >
